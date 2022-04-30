@@ -7,33 +7,33 @@ import OWM_KEY from "./Keys";
 
 function App() {
 
-    const [lat, setLat] = useState([]);
-
-    const [long, setLong] = useState([]);
+    // const [lat, setLat] = useState([]);
+    //
+    // const [long, setLong] = useState([]);
 
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            setLat(position.coords.latitude);
-            setLong(position.coords.longitude);
-        });
-
-        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=Imperial&appid=${OWM_KEY}`)
+        //     navigator.geolocation.getCurrentPosition(function (position) {
+        //         setLat(position.coords.latitude);
+        //         setLong(position.coords.longitude);
+        //     });
+        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=41.093842&lon=-85.139236&units=Imperial&appid=${OWM_KEY}`)
             .then(res => res.json())
             .then(result => {
-                console.log(result);
                 setData(result);
-            });
+                console.log(result);
+            })
+            .catch(console.error)
+    }, []);
+    // }, [lat, long]);
+    if (data) {
+        return <div className={"weather-section"}>
+            <p>{data.current.clouds}</p>
 
-    }, [lat, long]);
-
-
-    return (
-        <div className="App">
-
+            <p>{data.current.dt}</p>
         </div>
-    );
+    }
 }
 
 //
