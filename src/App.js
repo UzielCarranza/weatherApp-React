@@ -1,7 +1,7 @@
 import './App.css';
 import './Keys.js';
 import {useState, useEffect} from "react";
-import OWM_KEY from "./Keys";
+import {OWM_KEY} from "./Keys";
 
 
 function App() {
