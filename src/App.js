@@ -2,10 +2,7 @@ import './App.css';
 import './Keys.js';
 import {useState, useEffect} from "react";
 import OWM_KEY from "./Keys";
-import {isValidDateValue} from "@testing-library/user-event/dist/utils";
 
-
-import Weather from './components/weather';
 
 function App() {
 
@@ -29,17 +26,13 @@ function App() {
             .catch(console.error)
     }, []);
     // }, [lat, long]);
-    return (
-        <div className={"weather-section"}>
-            {(typeof data.main != 'undefined') ? (
-                <Weather weatherData={data}/>
-            ) : (
-                <div/>
-            )}
-            )}
 
+    if (data) {
+        return <div className={"weather-section"}>
+            <h1>{data.current.clouds}</h1>
+            <img src={"http://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@2x.png"} width={100}/>
         </div>
-    )
+    }
 }
 
 //
