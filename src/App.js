@@ -12,11 +12,14 @@ function App() {
 
     const [data, setData] = useState(null);
 
+    // useEffect(() => {
+    //     navigator.geolocation.getCurrentPosition(function (position) {
+    //         setLat(position.coords.latitude);
+    //         setLong(position.coords.longitude);
+    //     });
+    // }, [lat, long]);
+
     useEffect(() => {
-        //     navigator.geolocation.getCurrentPosition(function (position) {
-        //         setLat(position.coords.latitude);
-        //         setLong(position.coords.longitude);
-        //     });
         fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=41.093842&lon=-85.139236&units=Imperial&appid=${OWM_KEY}`)
             .then(res => res.json())
             .then(result => {
@@ -25,7 +28,6 @@ function App() {
             })
             .catch(console.error)
     }, []);
-    // }, [lat, long]);
 
     if (data) {
 
