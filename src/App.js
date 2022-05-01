@@ -30,7 +30,8 @@ function App() {
     if (data) {
         return <div className={"weather-section"}>
             <h1>{data.current.weather[0].main}</h1>
-            <img src={"http://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@2x.png"} width={100}/>
+            <img src={"http://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@2x.png"} width={100} alt={"current weather"}
+            className={"current-weather"}/>
             <h1>{data.current.temp}&deg;</h1>
             <h2>Feels like: </h2>
             <p>{data.current.weather[0].description}</p>
