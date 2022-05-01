@@ -28,13 +28,18 @@ function App() {
     // }, [lat, long]);
 
     if (data) {
+
+        let date = new Date(`${data.current.dt}` * 1000);
+        let allDates = date.toDateString();
         return <div className={"weather-section"}>
+            <h1>{allDates}</h1>
             <h1>{data.current.weather[0].main}</h1>
-            <img src={"http://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@2x.png"} width={100} alt={"current weather"}
-            className={"current-weather"}/>
+            <img src={"http://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@2x.png"} width={150}
+                 alt={"current weather"}
+                 className={"current-weather"}/>
             <h1>{data.current.temp}&deg;</h1>
-            <h2>Feels like: </h2>
-            <p>{data.current.weather[0].description}</p>
+            <h2>Feels like: {data.current.feels_like}&deg; </h2>
+            <p>Description: {data.current.weather[0].description}</p>
             <p>Humidity: {data.current.humidity}</p>
             <p>Pressure: {data.current.pressure}</p>
         </div>
