@@ -1,13 +1,17 @@
 .App {
   text-align: center;
 }
-
+body{
+  background-color: #46C9FF;
+}
 
 
 
 .weather-section{
-  background-color: #282c34;
+  border: 1px solid #000;
+  background: linear-gradient(90deg, #754d8b 0%, #4e5992 100%);
   width: 40%;
+  height: 60%;
   margin: 5em auto;
   display: flex;
   flex-flow: column wrap;
@@ -15,9 +19,10 @@
   align-items: center;
   color: #fff;
   padding: 4em 3em;
+  box-shadow: 5px 1px 1px 5px #000;
 }
 
 .current-weather{
-  border: 1px solid #ddd;
-  background-color: #101010;
+  border: 1px solid #000;
+  background-color: #ffffff;
 }
