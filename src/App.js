@@ -1,9 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
 import './Keys.js';
 import {useState, useEffect} from "react";
 import OWM_KEY from "./Keys";
+import {isValidDateValue} from "@testing-library/user-event/dist/utils";
 
+
+import Weather from './components/weather';
 
 function App() {
 
@@ -27,14 +29,33 @@ function App() {
             .catch(console.error)
     }, []);
     // }, [lat, long]);
-    if (data) {
-        return <div className={"weather-section"}>
-            <p>{data.current.clouds}</p>
+    return (
+        <div className={"weather-section"}>
+            {(typeof data.main != 'undefined') ? (
+                <Weather weatherData={data}/>
+            ) : (
+                <div/>
+            )}
+            )}
 
-            <p>{data.current.dt}</p>
         </div>
-    }
+    )
 }
+
+//
+// placed: data.timezone,
+//     manDescription: data.current.weather[0].main,
+//     currentDayDescription: data.current.weather[0].description,
+//     currentDayIcon: data.current.weather[0].icon,
+//     userLan: data.lat,
+//     userLon: data.lon,
+//     currentTemp: data.current.temp,
+//     dt: data.current.dt,
+//     wind: data.current.wind_speed,
+//     humidity: data.current.humidity,
+//     pressure: data.current.pressure,
+//     currentMain: data.current.weather[0].main,
+//     feelsLike: data.current.feels_like,
 
 //
 // function GetWeather({OWM_URL}, {userLat}, {userLong}) {
